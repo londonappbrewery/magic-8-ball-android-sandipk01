@@ -1,7 +1,14 @@
 package com.londonappbrewery.magiceightball;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -9,5 +16,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final ImageView image=findViewById(R.id.Image_app);
+        Button Ask_button=findViewById(R.id.ask_btn);
+        final int asknumber[]={R.drawable.ball1,
+                         R.drawable.ball2,
+                R.drawable.ball3,
+                R.drawable.ball4,
+                R.drawable.ball5
+        };
+
+        Ask_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Random random=new Random();
+                int ask_random=random.nextInt(5);
+                image.setImageResource(asknumber[ask_random]);
+                Log.d("Ask",""+ask_random);
+            }
+        });
     }
 }
